@@ -1,3 +1,13 @@
+Link to Trello Board - 'https://trello.com/b/eSi5Bxr6/kanban-template'
+
+Wireframes -
+
+ERDs -
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
