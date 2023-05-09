@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import IndexOfSnacks from "./Components/IndexOfSnacks";
+import ShowSnack from "./Components/ShowSnack";
+import NewSnack from "./Components/NewSnack";
+import HeartHealth from "./Components/HeartHealth";
+import EditSnack from "./Components/EditSnack";
+import Nav from "./Components/NavBar";
+import Home from "./Pages/Home";
+import FourOFour from "./Pages/FourOFour";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Router>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/snacks" element={<IndexOfSnacks />} />
+          <Route path="/snacks/:id" element={<ShowSnack />} />
+          <Route path="/snacks/new" element={<NewSnack />} />
+          <Route path="/snacks/edit" element={<EditSnack />} />
+          <Route path="/snacks/health" element={<HeartHealth />} />
+          <Route path="*" element={<FourOFour />} />
+        </Routes>
+      </Router>
+      <h4>Snack-A-Log!</h4>
     </div>
   );
 }
