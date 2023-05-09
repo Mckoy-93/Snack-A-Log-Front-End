@@ -39,10 +39,10 @@ const SnackIndex = () => {
         return (
           <div key={index}>
             <h2>{snack.name}</h2>
-            <h3>{snack.fiber}</h3>
-            <h3>{snack.protein}</h3>
-            <h3>{snack.added_sugar}</h3>
-            <h3>{snack.is_healthy}</h3>
+            <h3>{snack.calories}</h3>
+            <h3>{snack.fat}</h3>
+            <h3>{snack.sodium}</h3>
+            <h3>{snack.carbs}</h3>
            
             <Link className="snack-link" to={`/snacks/${snack.id}`}>
               Snack Details
