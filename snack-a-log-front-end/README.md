@@ -1,8 +1,3 @@
-Link to Trello Board - 'https://trello.com/b/eSi5Bxr6/kanban-template'
-
-Wireframes -
-
-ERDs -
 
 
 
