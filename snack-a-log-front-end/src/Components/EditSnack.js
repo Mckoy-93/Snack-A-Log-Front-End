@@ -44,6 +44,7 @@ function EditSnack(){
           (error) => navigate(`/not-found`)
         );
       }, [id, navigate]);
+     
     
       const handleSubmit = (event) => {
         event.preventDefault();
@@ -51,6 +52,7 @@ function EditSnack(){
       };
 
     return (
+        <div>
         <form onSubmit={handleSubmit}>
           <h1>Edit Your Snack!</h1>
           <label>Snack Name:</label>
@@ -101,9 +103,15 @@ function EditSnack(){
                 onChange={handleCheckboxChange}
                 checked={!snack.added_sugars}
               />
-                 <br></br>
-          <input type='submit' value='submit'/>
+
+              <br/>
+
+          <input type='submit' />
         </form>
+        <Link to={`/bookmarks/${id}`}>
+        <button>Nevermind!</button>
+      </Link>
+      </div>
         )
 }
 
