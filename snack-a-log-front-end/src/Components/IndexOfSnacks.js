@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Snack from "./Snack";
 
 const SnackIndex = () => {
   const [snacks, setSnacks] = useState([]);
@@ -10,7 +11,7 @@ const SnackIndex = () => {
     axios
       .get(`${API}/snacks`)
       .then((response) => {
-        setSnacks(response.data.payload);
+        setSnacks(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -18,41 +19,27 @@ const SnackIndex = () => {
   }, []);
   console.log(snacks);
 
-  const handleDelete = (event) => {
-    event.preventDefault();
-    const { id } = event.target;
-    console.log("HandleDelte:", id);
-    const API = process.env.REACT_APP_API_URL;
-    axios.delete(`${API}/snacks/${id}`).then((response) => {
-      setSnacks(
-        snacks.filter((snack) => {
-          return snack.id !== parseInt(id);
-        })
-      );
-    });
-  };
+  
+
+  // const handleDelete = (event) => {
+  //   event.preventDefault();
+  //   const { id } = event.target;
+  //   console.log("HandleDelete:", id);
+  //   const API = process.env.REACT_APP_API_URL;
+  //   axios.delete(`${API}/snacks/${id}`).then((response) => {
+  //     setSnacks(
+  //       snacks.filter((snack) => {
+  //         return snack.id !== parseInt(id);
+  //       })
+  //     );
+  //   });
+  // };
 
   return (
     <div className="snacks-list">
       <h1>Snack-A-Log Index</h1>
-      {snacks.map((snack, index) => {
-        return (
-          <div key={index}>
-            <h2>{snack.name}</h2>
-            <h3>{snack.calories}</h3>
-            <h3>{snack.fat}</h3>
-            <h3>{snack.sodium}</h3>
-            <h3>{snack.carbs}</h3>
-           
-            <Link className="snack-link" to={`/snacks/${snack.id}`}>
-              Snack Details
-            </Link>
-            <br></br>
-            <button id={snack.id} onClick={handleDelete}>
-              Delete Snack
-            </button>
-          </div>
-        );
+      {snacks.map((snack) => {
+        return <Snack key={snack.id} snack={snack}/>
       })}
     </div>
   );
