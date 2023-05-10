@@ -17,9 +17,6 @@ const Nav = () => {
         New Snack
       </Link>
       <br></br>
-      <Link className="nav-link" to="/snacks/edit">
-        Edit Snacks
-      </Link>
     </div>
   );
 };

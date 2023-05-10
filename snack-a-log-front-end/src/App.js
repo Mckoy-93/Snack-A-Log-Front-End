@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import IndexOfSnacks from "./Components/IndexOfSnacks";
-import ShowSnack from "./Components/ShowSnack";
+import Index from "./Pages/Index.js";
+import Show from "./Pages/Show.js";
+
 import NewSnack from "./Components/NewSnack";
-import HeartHealth from "./Components/HeartHealth";
-import EditSnack from "./Components/EditSnack";
+import Edit from "./Pages/Edit.js";
 import Nav from "./Components/NavBar";
 import Home from "./Pages/Home";
 import FourOFour from "./Pages/FourOFour";
@@ -15,11 +15,10 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/snacks" element={<IndexOfSnacks />} />
-          <Route path="/snacks/:id" element={<ShowSnack />} />
+          <Route path="/snacks" element={<Index />} />
+          <Route path="/snacks/:id" element={<Show/>} />
           <Route path="/snacks/new" element={<NewSnack />} />
-          <Route path="/snacks/edit" element={<EditSnack />} />
-          <Route path="/snacks/health" element={<HeartHealth />} />
+          <Route path="/snacks/:id/edit" element={<Edit />} />
           <Route path="*" element={<FourOFour />} />
         </Routes>
       </Router>
