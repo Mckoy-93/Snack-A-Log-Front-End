@@ -3,7 +3,7 @@ import Index from "./Pages/Index.js";
 import Show from "./Pages/Show.js";
 
 import NewSnack from "./Components/NewSnack";
-import EditSnack from "./Components/EditSnack";
+import Edit from "./Pages/Edit.js";
 import Nav from "./Components/NavBar";
 import Home from "./Pages/Home";
 import FourOFour from "./Pages/FourOFour";
@@ -18,7 +18,7 @@ function App() {
           <Route path="/snacks" element={<Index />} />
           <Route path="/snacks/:id" element={<Show/>} />
           <Route path="/snacks/new" element={<NewSnack />} />
-          <Route path="/snacks/edit" element={<EditSnack />} />
+          <Route path="/snacks/:id/edit" element={<Edit />} />
           <Route path="*" element={<FourOFour />} />
         </Routes>
       </Router>
