@@ -1,37 +1,64 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const ShowSnack = () => {
-  const { id } = useParams();
-  const { snack, setSnack } = useState({});
+const API = process.env.REACT_APP_API_URL;
 
-  useEffect(() => {
-    const API = process.env.REACT_APP_API_URL;
-    axios
+
+export default function ShowSnack() {
+    const [snack, setSnack] = useState([]);
+
+    const { id } = useParams()
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      axios
       .get(`${API}/snacks/${id}`)
-      .then((response) => {
-        setSnack(response.data.payload);
+      .then((res) => {
+        setSnack(res.data[0])
+      }).catch((e) => {
+        console.log("catch", e)
       })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, [id, setSnack]);
-  console.log(snack);
+    }, [id]);
 
-  const { name, calories, fat,sodium, carbs, added_sugars } = snack;
+    function handleDelete() {
+        deleteSnack();
+      };
+    
+      function deleteSnack() {
+        axios
+          .delete(`${API}/snacks/${id}`)
+          .then(() => {
+            navigate(`/snacks`);
+          })
+          .catch((e) => {
+            console.warn("catch:", e);
+          });
+      };
 
-  return (
-    <div>
-      <h1>{name}</h1>
-      <h3>{calories}</h3>
-      <h3>{fat}</h3>
-      <h3>{sodium}</h3>
-      <h4>{carbs}</h4>
-      <h3>{added_sugars}}</h3>
-      <Link to="/snacks/edit">Edit Snack</Link>
+    return(
+        <article>
+            <h2>Name: {snack.name}</h2>
+    <h3>{snack.added_sugars ? <p>Contains Added Sugars</p> : <p>Does Not Contain Added Sugars</p>}</h3>
+    <h5>Calories: {snack.calories}Kcal </h5>
+    <h5>Fat: {snack.fat}g</h5>
+    <h5>Carbs: {snack.carbs}g</h5>
+    <h5>Sodium: {snack.sodium}mg</h5>
+    <div className="showNavigation">
+      <div>
+        <Link to={`/snacks`}>
+          <button>Back</button>
+        </Link>
+      </div>
+      <div>
+        <Link to={`/snacks/${id}/edit`}>
+          <button>Edit</button>
+        </Link>
+      </div>
+      <div>
+        <button onClick={handleDelete}>Delete</button>
+      </div>
     </div>
-  );
+  </article>
+    )
 };
-
-export default ShowSnack;
