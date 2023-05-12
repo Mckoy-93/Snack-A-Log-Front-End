@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { confirmAlert } from 'react-confirm-alert';
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -21,9 +22,6 @@ export default function ShowSnack() {
       })
     }, [id]);
 
-    function handleDelete() {
-        deleteSnack();
-      };
     
       function deleteSnack() {
         axios
@@ -56,7 +54,15 @@ export default function ShowSnack() {
         </Link>
       </div>
       <div>
-        <button onClick={handleDelete}>Delete</button>
+        <button onClick={() => {
+    const confirmBox = window.confirm(
+      "Do you really want to delete this Snack?"
+    )
+    if (confirmBox === true) {
+      deleteSnack()
+    }
+  }}>
+          Delete</button>
       </div>
     </div>
   </article>
