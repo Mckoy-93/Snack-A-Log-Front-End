@@ -18,6 +18,14 @@ function EditSnack(){
         added_sugars: false,
       });
     
+      useEffect(() => {
+        axios.get(`${API}/snacks/${id}`).then(
+          (response) => setSnack(response.data),
+          (error) => navigate(`/not-found`)
+        );
+      }, [id, navigate]);
+
+
       const updateSnack = (updatedSnack) => {
         axios
           .put(`${API}/snacks/${id}`, updatedSnack)
@@ -37,13 +45,6 @@ function EditSnack(){
       const handleCheckboxChange = () => {
         setSnack({ ...snack, added_sugars: !snack.added_sugars });
       };
-
-    useEffect(() => {
-        axios.get(`${API}/snacks/${id}`).then(
-          (response) => setSnack(response.data),
-          (error) => navigate(`/not-found`)
-        );
-      }, [id, navigate]);
      
     
       const handleSubmit = (event) => {
