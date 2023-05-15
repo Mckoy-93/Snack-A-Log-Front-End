@@ -20,7 +20,7 @@ function EditSnack(){
 
       useEffect(() => {
         axios.get(`${API}/snacks/${id}`).then((res) => {
-          setSnack(res.data);
+          setSnack(res.data[0]);
         }).catch((e) => {
           console.log(e)
           navigate(`/not-found`);
