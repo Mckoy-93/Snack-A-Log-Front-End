@@ -51,10 +51,10 @@ export default function ShowSnack() {
     <h5>Carbs: {snack.carbs}g</h5>
     <h5>Sodium: {snack.sodium}mg</h5>
     <p>How to burn these calories:</p>
-    <p> Walking for <strong>{walking}</strong> minutes</p>
-    <p> Jump Roping for <strong>{jumpRope}</strong> minutes </p>
-    <p>Hiking for <strong>{hiking}</strong> minutes</p>
-    <p>Doing yoga for <strong>{yoga}</strong> minutes</p>
+    <p> Walking for <strong>{walking.toFixed(2)}</strong> minutes</p>
+    <p> Jump Roping for <strong>{jumpRope.toFixed(2)}</strong> minutes </p>
+    <p>Hiking for <strong>{hiking.toFixed(2)}</strong> minutes</p>
+    <p>Doing yoga for <strong>{yoga.toFixed(2)}</strong> minutes</p>
     <div className="showNavigation">
       <div>
         <Link to={`/snacks`}>
