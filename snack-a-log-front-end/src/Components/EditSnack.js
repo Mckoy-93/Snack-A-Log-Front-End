@@ -17,26 +17,16 @@ function EditSnack(){
         carbs: 0,
         added_sugars: false,
       });
-    
+
       useEffect(() => {
-        axios.get(`${API}/snacks/${id}`).then(
-          (response) => setSnack(response.data),
-          (error) => navigate(`/not-found`)
-        );
+        axios.get(`${API}/snacks/${id}`).then((res) => {
+          setSnack(res.data);
+        }).catch((e) => {
+          console.log(e)
+          navigate(`/not-found`);
+        })
       }, [id, navigate]);
-
-
-      const updateSnack = (updatedSnack) => {
-        axios
-          .put(`${API}/snacks/${id}`, updatedSnack)
-          .then(
-            () => {
-              navigate(`/snacks/${id}`);
-            },
-            (error) => console.error(error)
-          )
-          .catch((c) => console.warn("catch", c));
-      };
+    
 
       const handleTextChange = (event) => {
         setSnack({ ...snack, [event.target.id]: event.target.value });
@@ -49,7 +39,13 @@ function EditSnack(){
     
       const handleSubmit = (event) => {
         event.preventDefault();
-        updateSnack(snack, id);
+        axios.put(`${API}/snacks/${id}`, snack)
+        .then((res) => {
+          setSnack(res.data)
+          navigate(`/snacks/${id}`)
+        }).catch((e) => {
+          console.log(e)
+        })
       };
 
     return (
@@ -72,6 +68,7 @@ function EditSnack(){
                   value={snack.calories}
                   onChange={handleTextChange}
                   id='calories'
+                  min="0"
                   />
                   <br/>
                   <label>Fat Amount:</label>
@@ -81,6 +78,7 @@ function EditSnack(){
                       value={snack.fat}
                       onChange={handleTextChange}
                       id='fat'
+                      min="0"
                       />
                       <br/>
                   <label>Sodium:</label>
@@ -90,6 +88,7 @@ function EditSnack(){
                       value={snack.sodium}
                       onChange={handleTextChange}
                       id='sodium'
+                      min="0"
                       />
                       <br/>
                       <label>Carbs:</label>
@@ -99,6 +98,7 @@ function EditSnack(){
                       value={snack.carbs}
                       onChange={handleTextChange}
                       id='carbs'
+                      min="0"
                       />
                       <br/>
                   <label>Added Sugars:</label>
@@ -107,7 +107,7 @@ function EditSnack(){
                 id="added_sugars"
                 type="checkbox"
                 onChange={handleCheckboxChange}
-                checked={!snack.added_sugars}
+                checked={snack.added_sugars}
               />
 
               <br/>

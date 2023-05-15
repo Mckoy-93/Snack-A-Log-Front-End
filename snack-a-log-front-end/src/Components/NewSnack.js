@@ -63,6 +63,7 @@ export default function NewSnack() {
             name="calories-count"
             onChange={handleTextChange}
             id='calories'
+            min="0"
             />
             <br/>
             <label>Fat Amount:</label>
@@ -71,6 +72,7 @@ export default function NewSnack() {
                 name='fat-count'
                 onChange={handleTextChange}
                 id='fat'
+                min="0"
                 />
                 <br/>
             <label>Sodium:</label>
@@ -79,6 +81,7 @@ export default function NewSnack() {
                 name='sodium-count'
                 onChange={handleTextChange}
                 id='sodium'
+                min="0"
                 />
                 <br/>
                 <label>Carbs:</label>
@@ -87,6 +90,7 @@ export default function NewSnack() {
                 name='carb-count'
                 onChange={handleTextChange}
                 id='carbs'
+                min="0"
                 />
                 <br/>
             <label>Added Sugars:</label>
