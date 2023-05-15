@@ -18,6 +18,14 @@ function EditSnack(){
         added_sugars: false,
       });
     
+      useEffect(() => {
+        axios.get(`${API}/snacks/${id}`).then(
+          (response) => setSnack(response.data),
+          (error) => navigate(`/not-found`)
+        );
+      }, [id, navigate]);
+
+
       const updateSnack = (updatedSnack) => {
         axios
           .put(`${API}/snacks/${id}`, updatedSnack)
@@ -37,13 +45,6 @@ function EditSnack(){
       const handleCheckboxChange = () => {
         setSnack({ ...snack, added_sugars: !snack.added_sugars });
       };
-
-    useEffect(() => {
-        axios.get(`${API}/snacks/${id}`).then(
-          (response) => setSnack(response.data),
-          (error) => navigate(`/not-found`)
-        );
-      }, [id, navigate]);
      
     
       const handleSubmit = (event) => {
@@ -63,6 +64,7 @@ function EditSnack(){
               onChange={handleTextChange}
               id='name'
               />
+              <br/>
               <label>Calories:</label>
               <input
                   type="number"
@@ -71,6 +73,7 @@ function EditSnack(){
                   onChange={handleTextChange}
                   id='calories'
                   />
+                  <br/>
                   <label>Fat Amount:</label>
                   <input
                       type='number'
@@ -79,6 +82,7 @@ function EditSnack(){
                       onChange={handleTextChange}
                       id='fat'
                       />
+                      <br/>
                   <label>Sodium:</label>
                   <input 
                       type='number'
@@ -87,6 +91,7 @@ function EditSnack(){
                       onChange={handleTextChange}
                       id='sodium'
                       />
+                      <br/>
                       <label>Carbs:</label>
                   <input 
                       type='number'
@@ -95,6 +100,7 @@ function EditSnack(){
                       onChange={handleTextChange}
                       id='carbs'
                       />
+                      <br/>
                   <label>Added Sugars:</label>
               <input
                 name='added_sugars'

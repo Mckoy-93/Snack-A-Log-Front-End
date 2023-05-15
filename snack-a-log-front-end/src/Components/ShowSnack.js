@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { confirmAlert } from 'react-confirm-alert';
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -11,6 +10,10 @@ export default function ShowSnack() {
 
     const { id } = useParams()
     const navigate = useNavigate();
+    let walking = 0
+    let jumpRope = 0
+    let hiking = 0
+    let yoga = 0
   
     useEffect(() => {
       axios
@@ -21,6 +24,11 @@ export default function ShowSnack() {
         console.log("catch", e)
       })
     }, [id]);
+
+    walking = (snack.calories / 100) * 30;
+    jumpRope = (snack.calories / 100) * 7;
+    hiking = (snack.calories / 100) * 15;
+    yoga = (snack.calories / 100) * 30;
 
     
       function deleteSnack() {
@@ -42,6 +50,11 @@ export default function ShowSnack() {
     <h5>Fat: {snack.fat}g</h5>
     <h5>Carbs: {snack.carbs}g</h5>
     <h5>Sodium: {snack.sodium}mg</h5>
+    <p>How to burn these calories:</p>
+    <p> Walking for <strong>{walking}</strong> minutes</p>
+    <p> Jump Roping for <strong>{jumpRope}</strong> minutes </p>
+    <p>Hiking for <strong>{hiking}</strong> minutes</p>
+    <p>Doing yoga for <strong>{yoga}</strong> minutes</p>
     <div className="showNavigation">
       <div>
         <Link to={`/snacks`}>
