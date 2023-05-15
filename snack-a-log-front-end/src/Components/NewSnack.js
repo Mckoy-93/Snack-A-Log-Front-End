@@ -55,6 +55,8 @@ export default function NewSnack() {
         id='name'
         />
         <br/>
+        
+        <br/>
         <label>Calories:</label>
         <input
             type="number"
