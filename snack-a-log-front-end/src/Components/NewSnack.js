@@ -40,7 +40,7 @@ export default function NewSnack() {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      addSnack(Snack);
+      addSnack(snack);
     };
 
 

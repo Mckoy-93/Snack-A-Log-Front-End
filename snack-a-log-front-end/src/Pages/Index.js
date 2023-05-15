@@ -1,5 +1,5 @@
 import IndexOfSnacks from "../Components/IndexOfSnacks.js"
-import './Index.css'
+
 
 function Index() {
     return (
