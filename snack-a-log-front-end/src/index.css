@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #D4ADCF;
 }
 
 code {
@@ -12,16 +13,27 @@ code {
     monospace;
 }
 
-.HolyGrail-content {
-  flex: 1;
+.nav {
+  background: #DDE1E4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  box-shadow: 2px 2px 4px #EC368D;
+  margin-bottom: 1em;
 }
 
-.HolyGrail-nav, .HolyGrail-ads {
-  /* 12em is the width of the columns */
-  flex: 0 0 12em;
+h1, h2, h5, h3 {
+  color:#856084
 }
 
-.HolyGrail-nav {
-  /* put the nav on the left */
-  order: -1;
+h4 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+
+button {
+  width: 30%;
 }
