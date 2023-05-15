@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Snack from "./Snack";
 
@@ -36,7 +35,7 @@ const SnackIndex = () => {
   // };
 
   return (
-    <div className="snacks-list">
+    <div className="HolyGrail-content" id="snacks-list">
       <h1>Snack-A-Log Index</h1>
       {snacks.map((snack) => {
         return <Snack key={snack.id} snack={snack}/>

@@ -3,7 +3,7 @@ import React from "react";
 
 const Nav = () => {
   return (
-    <div className="nav" id="nav">
+    <div className="HolyGrail-nav" id="nav">
       <h2>Snack-A-Log!</h2>
       <Link className="nav-link" to="/">
         Home
