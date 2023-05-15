@@ -22,7 +22,6 @@ function App() {
           <Route path="*" element={<FourOFour />} />
         </Routes>
       </Router>
-      <h4>Snack-A-Log!</h4>
     </div>
   );
 }
