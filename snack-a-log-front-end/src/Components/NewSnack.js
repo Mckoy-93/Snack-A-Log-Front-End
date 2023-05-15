@@ -54,6 +54,7 @@ export default function NewSnack() {
         onChange={handleTextChange}
         id='name'
         />
+        <br/>
         <label>Calories:</label>
         <input
             type="number"
@@ -61,6 +62,7 @@ export default function NewSnack() {
             onChange={handleTextChange}
             id='calories'
             />
+            <br/>
             <label>Fat Amount:</label>
             <input
                 type='number'
@@ -68,6 +70,7 @@ export default function NewSnack() {
                 onChange={handleTextChange}
                 id='fat'
                 />
+                <br/>
             <label>Sodium:</label>
             <input 
                 type='number'
@@ -75,6 +78,7 @@ export default function NewSnack() {
                 onChange={handleTextChange}
                 id='sodium'
                 />
+                <br/>
                 <label>Carbs:</label>
             <input 
                 type='number'
@@ -82,6 +86,7 @@ export default function NewSnack() {
                 onChange={handleTextChange}
                 id='carbs'
                 />
+                <br/>
             <label>Added Sugars:</label>
         <input
           name='added_sugars'
@@ -93,7 +98,7 @@ export default function NewSnack() {
            
 
                 <br></br>
-                <input type='submit' value='submit'/>
+                <input type='submit' value='Submit'/>
   </form>
   )
 }
